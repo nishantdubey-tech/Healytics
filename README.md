@@ -1,6 +1,6 @@
 # Healytics — AI/ML Driven Platform for Clinical Data Insights & Risk Prediction
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live--Demo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://healytics-antigravity.vercel.app)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live--Demo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://healytics-eight.vercel.app)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -27,8 +27,8 @@
 
 ## 🌐 Live Demo & Deployment
 
-* **Live Web Application (Vercel):** [https://healytics-antigravity.vercel.app](https://healytics-antigravity.vercel.app)
-* **Backend API Health Check:** `https://healytics-antigravity.vercel.app/api/health`
+* **Live Web Application (Vercel):** [https://healytics-eight.vercel.app](https://healytics-eight.vercel.app)
+* **Backend API Health Check:** `https://healytics-eight.vercel.app/api/health`
 * **Default Demo Credentials:**
   * **Username:** `demo`
   * **Password:** `healytics123`
