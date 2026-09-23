@@ -1,0 +1,1 @@
+The supplied report describes the Cleveland/UCI heart disease dataset as a 303-instance, 14-column dataset (13 predictors plus target). The application downloads the Cleveland subset at model-training time when network access is available. Do not upload real patient-identifiable information to the public deployment.

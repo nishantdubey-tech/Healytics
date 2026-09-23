@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+frontend/node_modules/
+frontend/dist/
+backend/healytics.db
+*.db
+backend/models/*.joblib
+backend/models/*.pkl
+.DS_Store
+.vercel

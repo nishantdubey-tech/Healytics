@@ -1,0 +1,10 @@
+services:
+  healytics:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      JWT_SECRET: change-me
+      DEMO_USERNAME: demo
+      DEMO_PASSWORD: healytics123
+      DATABASE_URL: sqlite:///./healytics.db
