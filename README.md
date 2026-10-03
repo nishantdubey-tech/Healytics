@@ -6,163 +6,93 @@
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-**Healytics** is an end-to-end clinical decision-support web application that transforms raw medical records and tabular patient datasets into actionable risk predictions and explainable AI insights.
+**Healytics** is an academic clinical decision-support demo for exploring risk predictions on patient records and tabular datasets. It is not a medical device and must not be used for clinical diagnosis.
 
----
+## Academic Project
 
-## 🏫 Academic Project Details
+- Institution: Jaypee Institute of Information Technology (JIIT), Noida
+- Department: Electronics & Communication Engineering
+- Project: Healytics — AI-ML Driven Platform for Clinical Data Insights and Risk Prediction
+- Academic session: 2025–2026
+- Supervisor: Dr. Radha Raman Pandey, Assistant Professor Senior Grade
+- Team: Nishant Dubey (database management and testing), Nikhil Pandey (backend and AI logic), Akarsh Jain (frontend and UI design)
 
-* **Institution:** Jaypee Institute of Information Technology (JIIT), Noida
-* **Department:** Department of Electronics & Communication Engineering (ECE)
-* **Project Title:** *Healytics: An AI-ML Driven Platform for Clinical Data Insights and Risk Prediction*
-* **Academic Session:** 2025 – 2026
-* **Supervisor:** Dr. Radha Raman Pandey *(Assistant Professor Senior Grade)*
+## Live Demo
 
-### 👨‍💻 Project Team
-* **Nishant Dubey** (Enrolment No: 23102066) — *Database Management & Testing*
-* **Nikhil Pandey** (Enrolment No: 23802002) — *Backend Development & AI Logic*
-* **Akarsh Jain** (Enrolment No: 23102004) — *Frontend Development & UI Design*
+- Web application: https://healytics-eight.vercel.app
+- API health check: https://healytics-eight.vercel.app/api/health
+- Demo access is configured with DEMO_USERNAME and DEMO_PASSWORD environment variables. Do not use source-code defaults on a public deployment.
 
----
+## Features
 
-## 🌐 Live Demo & Deployment
+1. Heart-disease risk prediction using a Random Forest model trained on the UCI Cleveland Heart Disease dataset.
+2. Feature-impact explanations for factors including age, cholesterol, maximum heart rate, resting blood pressure, and angina.
+3. CSV analysis that detects numeric and categorical fields and selects a classification or regression strategy.
+4. Dashboard charts for risk distribution and aggregate analysis statistics.
+5. PDF summaries with patient metrics and explanatory factors.
+6. Vercel serverless adapters with temporary SQLite and model-storage fallbacks.
 
-* **Live Web Application (Vercel):** [https://healytics-eight.vercel.app](https://healytics-eight.vercel.app)
-* **Backend API Health Check:** `https://healytics-eight.vercel.app/api/health`
-* **Default Demo Credentials:**
-  * **Username:** `demo`
-  * **Password:** `healytics123`
+## Architecture
 
----
+    React + Vite UI → FastAPI API → ML engine and SQLite/PostgreSQL
 
-## ✨ Key Features
+## Tech Stack
 
-1. **Patient Risk Prediction**: Real-time heart disease risk classification (Low, Moderate, High Risk) powered by Random Forest trained on the UCI Cleveland Heart Disease dataset.
-2. **Explainable AI (SHAP / Feature Impact)**: Transparent decision-making breaking down exact risk factors (Age, Cholesterol, Max Heart Rate, Resting BP, Angina) for doctors.
-3. **Automated Data Cleaning & Strategy Engine**: Upload any custom CSV dataset; the system automatically detects numeric/categorical fields and selects between Classification (Random Forest) and Regression (Gradient Boosting).
-4. **Interactive Analytics Dashboard**: Visual charts depicting patient risk distribution, total cases analyzed, and real-time risk statistics.
-5. **PDF Report Generation**: Downloadable medical risk report with patient metrics and top explanatory risk factors.
-6. **Vercel Serverless Ready**: Production-tuned for serverless deployment with fallback `/tmp` SQLite and model storage handlers.
-
----
-
-## 🏗 System Architecture
-
-```
-                               ┌─────────────────────────┐
-                               │     React + Vite UI     │
-                               │   (Presentation Tier)   │
-                               └────────────┬────────────┘
-                                            │ HTTP / JSON API
-                               ┌────────────▼────────────┐
-                               │   FastAPI Web Server    │
-                               │   (Business Logic)      │
-                               └────────────┬────────────┘
-                                            │
-                    ┌───────────────────────┴───────────────────────┐
-                    │                                               │
-       ┌────────────▼────────────┐                     ┌────────────▼────────────┐
-       │   Random Forest / GB    │                     │    SQLite / Postgres    │
-       │    ML Engine + SHAP     │                     │     Database Store      │
-       └─────────────────────────┘                     └─────────────────────────┘
-```
-
----
-
-## 🛠 Tech Stack
-
-| Layer | Technologies Used |
+| Layer | Technologies |
 |---|---|
-| **Frontend** | React 18, Vite, Lucide Icons, Axios, CSS3 |
-| **Backend** | Python 3.9+, FastAPI, Uvicorn, Pydantic, PyJWT, Passlib |
-| **Machine Learning** | Scikit-Learn, Pandas, NumPy, Joblib, SHAP |
-| **Database & Persistence** | SQLite / PostgreSQL, SQLAlchemy ORM |
-| **PDF Generation** | ReportLab |
-| **Cloud Deployment** | Vercel (Serverless Functions), Docker |
+| Frontend | React 18, Vite, Lucide Icons, Axios, CSS |
+| Backend | Python 3.9+, FastAPI, Uvicorn, Pydantic, PyJWT, Passlib |
+| Machine learning | Scikit-learn, Pandas, NumPy, Joblib, SHAP |
+| Persistence and reports | SQLAlchemy, SQLite/PostgreSQL, ReportLab |
+| Deployment | Vercel serverless functions, Docker |
 
----
+## Local Setup
 
-## 🚀 Quick Start Guide
+Prerequisites: Python 3.9+, Node.js 18+, and npm.
 
-### Prerequisites
-* **Python 3.9+** installed
-* **Node.js (v18+)** and **npm** installed
+    git clone https://github.com/nishantdubey-tech/Healytics.git
+    cd Healytics
+    cd backend
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
 
-### 1. Clone & Setup
+Configure DEMO_USERNAME, DEMO_PASSWORD, and JWT_SECRET in your environment before starting the backend. Keep the values private and use unique, strong values for every deployment.
 
-```bash
-git clone https://github.com/YOUR_USERNAME/healytics.git
-cd healytics
-```
+    python3 -m uvicorn app.main:app --reload --port 8000
 
-### 2. Backend Setup & Local Server
+The API runs at http://localhost:8000 (docs: http://localhost:8000/docs). In a second terminal:
 
-```bash
-# Navigate to backend directory
-cd backend
+    cd frontend
+    npm install
+    npm run dev
 
-# Create virtual environment (optional)
-python3 -m venv .venv
-source .venv/bin/activate # On Windows: .venv\Scripts\activate
+The frontend runs at http://localhost:5173.
 
-# Install dependencies
-pip install -r requirements.txt
+## Vercel Deployment
 
-# Run FastAPI backend server
-python3 -m uvicorn app.main:app --reload --port 8000
-```
-API endpoints will be available at `http://localhost:8000` (Swagger docs: `http://localhost:8000/docs`).
+Repository configuration files: [api/index.py](api/index.py), [vercel.json](vercel.json), and [requirements.txt](requirements.txt). Set DEMO_USERNAME, DEMO_PASSWORD, and JWT_SECRET in Vercel project environment settings before deployment; do not commit these values.
 
-### 3. Frontend Setup & Run
+    npm install -g vercel
+    vercel login
+    vercel --prod
 
-In a second terminal window:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Open `http://localhost:5173` in your browser.
-
----
-
-## ☁️ Deploying to Vercel
-
-The project includes pre-configured Vercel serverless adapters:
-* [`api/index.py`](file:///Users/nishantdubey/Downloads/Healytics_Antigravity/api/index.py) — Serverless Function Entrypoint
-* [`vercel.json`](file:///Users/nishantdubey/Downloads/Healytics_Antigravity/vercel.json) — Routing and Static Output Config
-* [`requirements.txt`](file:///Users/nishantdubey/Downloads/Healytics_Antigravity/requirements.txt) — Optimized Serverless Dependencies
-
-To deploy directly via Vercel CLI:
-
-```bash
-npm install -g vercel
-vercel login
-vercel --prod
-```
-
----
-
-## 📌 API Endpoints Summary
+## API Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/health` | Service health status |
-| `POST` | `/api/auth/login` | User authentication & JWT generation |
-| `POST` | `/api/predict` | Run heart risk ML model on patient record |
-| `POST` | `/api/upload` | Upload & auto-analyze custom CSV datasets |
-| `GET` | `/api/history` | Retrieve prediction history |
-| `GET` | `/api/analytics/summary` | Dashboard metrics & aggregate risk stats |
-| `POST` | `/api/report` | Generate downloadable PDF summary report |
+| GET | /api/health | Service health |
+| POST | /api/auth/login | Authentication and JWT generation |
+| POST | /api/predict | Risk prediction for a patient record |
+| POST | /api/upload | Analyze an uploaded CSV file |
+| GET | /api/history | Retrieve recent prediction history |
+| GET | /api/analytics/summary | Aggregate risk statistics |
+| POST | /api/report | Generate a PDF summary |
 
----
+## Disclaimer
 
-## ⚠️ Disclaimer
+This application was developed for academic, research, and decision-support demonstration purposes at JIIT Noida. It is not a certified medical device. Its predictions must not be used as clinical diagnoses.
 
-> **Medical Disclaimer:** This application is developed strictly for academic, research, and decision-support demonstration purposes as part of the B.Tech curriculum at JIIT Noida. It is **not** a certified medical device. Predictions generated by this system must not be used as clinical diagnoses.
+## License
 
----
-
-## 📜 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+MIT License — see [LICENSE](LICENSE).
